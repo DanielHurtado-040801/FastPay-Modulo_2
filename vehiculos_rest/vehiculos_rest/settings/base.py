@@ -1,4 +1,5 @@
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +31,7 @@ BASE_APPS = [
 #Aplicaciones mias, creadas en este proyecto
 LOCAL_APPS = [
     'users',
+    'vehiculosApp',
 ]
 #Librerias externas
 THIRD_APPS = [
@@ -108,7 +110,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+MEDIA_URL = '/img/'
+#Ruta para guardar las imagenes en una carpeta y me reconozca por django esa carpeta
+MEDIA_ROOT = os.path.join(BASE_DIR, 'img')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
