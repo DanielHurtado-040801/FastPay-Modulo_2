@@ -42,10 +42,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f'{self.name} {self.last_name}'
-    
-class Vehiculos(models.Model):
-    placa = models.CharField('Placa identificada',max_length=6, unique=True)
-    img_placa = models.ImageField('Imagen Placa', max_length=255, unique=True)
-    hora_ingreso = models.TimeField('Hora de ingreso', auto_now_add=True)
-    hora_salida = models.TimeField('Hora de salida', auto_now_add=True)
-    salida = models.BooleanField(default=False)
