@@ -14,6 +14,30 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'pymongo',
+#     },
+#     'mongo': {
+#         'ENGINE': 'pymongo',
+#         'NAME': 'FastPay',
+#         'HOST': 'localhost',
+#         'PORT': 27017,
+#         'USERNAME': 'dehurtado',
+#         'PASSWORD': 'wilson2001'
+#     }
+# }
+
+# MONGODB_DATABASES = {
+#     'default': {
+#         'NAME': 'FastPay',
+#         'HOST': 'localhost',
+#         'PORT': 27017,
+#         'USERNAME': 'dehurtado',
+#         'PASSWORD': 'wilson2001',
+#         'AUTHENTICATION_SOURCE': 'admin'
+#     }
+# }
 
 
 # Static files (CSS, JavaScript, Images)
