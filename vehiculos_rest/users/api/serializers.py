@@ -1,6 +1,12 @@
 from users.models import User
 from rest_framework import serializers
 
+
+class UserTokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'name')
+
 #Serializador para crear y actualizar con encriptacion de contraseña
 class UserSerializer(serializers.ModelSerializer):
     class Meta: 
