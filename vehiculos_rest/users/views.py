@@ -1,3 +1,5 @@
+from django.contrib.sessions.models import Session
+from datetime import datetime
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework import status
@@ -20,6 +22,13 @@ class Login(ObtainAuthToken):
                         'message': 'Inicio de sesion exitoso'
                     }, status = status.HTTP_201_CREATED)
                 else: 
+                    #Cerramos la sesion dado, para esto verificamos que haya una sesion creada y va a eliminar esa sesion para crear otra en caso de ingresar en otra sesion
+                    all_sessions = Session.objects.filter(expire_date__gte = datetime.now())
+                    if all_sessions.exists():
+                        for session in all_sessions:
+                            session_data = session.get_decoded()
+                            if user.id == int(session_data.get('_auth_user_id')):
+                                session.delete()
                     token.delete() #Si ya tiene un token creado lo que hace es eliminar el que tiene y le genera uno nuevo
                     token = Token.objects.create(user = user)
                     return Response({
@@ -27,6 +36,10 @@ class Login(ObtainAuthToken):
                         'user': user_serializer.data,
                         'message': 'Inicio de sesion exitoso'
                     }, status = status.HTTP_201_CREATED)
+                    """Dado el caso que no queremos crear una sesion nueva si no que si ya se ha iniciado sesion simplemente no deje ingresar:
+                    return Response({
+                        'error': 'Ya se ha inciado sesion con este usuario'
+                     }, status = status.HTTP_409_CONFLICT)"""
             else:
                 return Response({'error': 'Este usuario no esta activo'}, status=status.HTTP_401_UNAUTHORIZED)
         else:
