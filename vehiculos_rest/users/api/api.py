@@ -10,7 +10,7 @@ def user_api_view(request):
 
     #List users
     if request.method == 'GET':        
-        users = User.objects.all().values('id', 'username','email', 'password')
+        users = User.objects.all().values('id', 'username','email', 'name','last_name',  'password')
         users_serializer  = UserListSerializer(users, many = True)
         return  Response(users_serializer.data, status= status.HTTP_200_OK)
     

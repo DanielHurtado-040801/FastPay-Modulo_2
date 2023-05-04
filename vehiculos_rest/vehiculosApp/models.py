@@ -6,8 +6,8 @@ from baseApp.models import BaseModel
 class Vehiculo(BaseModel):
     placa = models.CharField('Placa identificada',max_length=10, unique=True)
     img_placa = models.ImageField('Imagen Placa', upload_to='placas/', max_length=255, unique=True, null=True)
-    hora_ingreso = models.TimeField('Hora de ingreso', auto_now_add=True, null=False)
-    hora_salida = models.TimeField('Hora de salida', auto_now_add=True, null=False)
+    hora_ingreso = models.DateTimeField('Hora de ingreso', auto_now_add=True, null=False)
+    hora_salida = models.DateTimeField('Hora de salida', auto_now_add=False, null=True)
     salida = models.BooleanField(default=False)
 
 class Meta:
