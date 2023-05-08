@@ -5,7 +5,7 @@ from rest_framework import serializers
 class UserTokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'name')
+        fields = '__all__'
 
 #Serializador para crear y actualizar con encriptacion de contraseña
 class UserSerializer(serializers.ModelSerializer):
@@ -29,12 +29,14 @@ class UserSerializer(serializers.ModelSerializer):
 class UserListSerializer(serializers.ModelSerializer):
     class Meta: 
         model = User
-
+        fields = '__all__'
     #Esta funcion se usa para determinar que valores se van a mostrar en la consulta de uno o varios usuarios
     def to_representation(self, instance):
         return {
             'id': instance['id'],
             'username': instance['username'],
             'email': instance['email'],
-            'password': instance['password']
+            'name': instance['name'],
+            'last_name': instance['last_name'],
+            'password': instance['password'], 
         }
