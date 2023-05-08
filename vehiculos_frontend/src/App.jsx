@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation></Navigation>
-      <div className="container mx-auto mb-20">
+      <div className="mb-20 w-full px-10">
         <Routes>
           <Route path="/" element={<Navigate to="/usuarios" />} /> //Esta ruta
           redirecciona la ruta principal a la que yo quiero que sea mi ruta

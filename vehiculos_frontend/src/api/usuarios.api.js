@@ -15,3 +15,5 @@ export const createUser = (usuario) => usuariosApi.post('/usuario/usuario/', usu
 export const deleteUser = (id) => usuariosApi.delete(`/usuario/usuario/${id}`);
 //Petiicion para actualizar un usuario obteniendo sus datos mediante el id
 export const updateUser = (id, usuario) => usuariosApi.put(`/usuario/usuario/${id}/`, usuario);
+//Login usuarios
+export const login = () => usuariosApi.put(`/login/`);

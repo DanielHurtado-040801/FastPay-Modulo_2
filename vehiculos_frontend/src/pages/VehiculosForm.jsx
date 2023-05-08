@@ -58,7 +58,7 @@ export function VehiculosForm() {
       <form
         onSubmit={onSubmit}
         action=""
-        class="bg-white shadow-md shadow-zinc-500 rounded-lg px-8 pt-6 pb-8 flex flex-col"
+        className="bg-white shadow-md shadow-zinc-500 rounded-lg px-8 pt-6 pb-8 flex flex-col"
       >
         <span className="font-bold text-zinc-600">Placa</span>
         <input
@@ -71,7 +71,7 @@ export function VehiculosForm() {
           <span className="text-red-500">** Este campo es requerido</span>
         )}
 
-        <span className="font-bold text-zinc-600">Hora Ingreso</span>
+        <span className="font-bold text-zinc-600 mt-1">Hora Ingreso</span>
         <input
           type="text"
           placeholder="hora_ingreso"
@@ -82,7 +82,7 @@ export function VehiculosForm() {
           <span className="text-red-500">** Este campo es requerido</span>
         )}
 
-<span className="font-bold text-zinc-600">Hora Salida</span>
+<span className="font-bold text-zinc-600  mt-1">Hora Salida</span>
         <input
           type="text"
           placeholder="hora_salida"
@@ -93,14 +93,7 @@ export function VehiculosForm() {
           <span className="text-red-500">** Este campo es requerido</span>
         )}
 
-<span className="font-bold text-zinc-600">Salida</span>
-        <input
-          type="checkbox"
-          {...register("salida")}
-          className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2  "
-        />
-
-<span className="font-bold text-zinc-600">Foto</span>
+<span className="font-bold text-zinc-600  mt-1">Foto</span>
         <input
           type="file"
           {...register("img_placa", { required: false })}

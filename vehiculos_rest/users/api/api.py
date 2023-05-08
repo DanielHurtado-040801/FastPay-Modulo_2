@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 @api_view(['GET', 'POST'])
-def user_api_view(request):
+def user_api_view(request, *args, **kwargs ):
 
     #List users
     if request.method == 'GET':        
