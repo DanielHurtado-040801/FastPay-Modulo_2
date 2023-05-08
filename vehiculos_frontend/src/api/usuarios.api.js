@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {Auth0Provider} from '@auth0/auth0-react'
 
 //Creamos la url base para solo agregar las rutas mas simples a la url base y tener el codigo mas ordenado
 const usuariosApi = axios.create({
@@ -16,4 +17,4 @@ export const deleteUser = (id) => usuariosApi.delete(`/usuario/usuario/${id}`);
 //Petiicion para actualizar un usuario obteniendo sus datos mediante el id
 export const updateUser = (id, usuario) => usuariosApi.put(`/usuario/usuario/${id}/`, usuario);
 //Login usuarios
-export const login = () => usuariosApi.put(`/login/`);
+export const login = () => usuariosApi.post(`/login`);
