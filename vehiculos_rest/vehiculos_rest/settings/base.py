@@ -1,10 +1,16 @@
-
 import os
 from pathlib import Path
+
+# 📁 webappexample/settings.py -----
+from dotenv import load_dotenv, find_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 📁 webappexample/settings.py -----
+
+# Add the following line after 'BASE_DIR = ...'
+TEMPLATE_DIR = os.path.join(BASE_DIR, "webappexample", "templates")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -45,7 +51,8 @@ THIRD_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'drf_yasg',
-    'coreapi'
+    'coreapi',
+    'rest_framework_simplejwt',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS 
@@ -69,7 +76,7 @@ ROOT_URLCONF = 'vehiculos_rest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,6 +121,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173"
 ]
 
+CORS_ALLOW_CREDENTIALS = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -142,3 +150,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
+
+# 📁 webappexample/settings.py -----
+
+# Load environment definition file
+ENV_FILE = find_dotenv()
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
+
+
+# Load Auth0 application settings into memory
+AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
+AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
+AUTH0_CLIENT_SECRET = os.environ.get("AUTH0_CLIENT_SECRET")
