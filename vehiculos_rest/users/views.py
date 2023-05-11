@@ -8,7 +8,6 @@ from users.api.serializers import UserTokenSerializer
 from rest_framework.views import APIView
 
 class Login(ObtainAuthToken):
-
     def post(self, request, *args, **kwargs):
         login_serializer = self.serializer_class(data = request.data, context = {'request': request})
         if login_serializer.is_valid():
