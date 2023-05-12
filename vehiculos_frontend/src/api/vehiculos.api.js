@@ -5,8 +5,17 @@ const vehiculosApi = axios.create({
     baseURL: 'http://127.0.0.1:8000/'
 })
 
-//Peticion GET para obtener todos los usuarios
-export const getAllVehicles = () => vehiculosApi.get('/vehiculo/vehiculo/');
+//Peticion GET para obtener todos los vehiculos
+export const getAllVehicles = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      return vehiculosApi.get("/vehiculo/vehiculo/", {
+        params: { token },
+      });
+    } else {
+      window.location.href = "/";
+    }
+  };
 
 export const getOneVehiculo = (id) => vehiculosApi.get(`/vehiculo/vehiculo/${id}`);
 //Peticion post para crear un nuevo usuario

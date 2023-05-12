@@ -126,18 +126,6 @@ export function UsuariosForm() {
             const confirmar = window.confirm("¿Estas seguro?");
             if (confirmar) {
               await deleteUser(parametros.id);
-              <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-              />;
               toast.success("Usuario Eliminado Correctamente!", {
                 position: "top",
                 style: { background: "#101010", color: "#FFFFFF" },

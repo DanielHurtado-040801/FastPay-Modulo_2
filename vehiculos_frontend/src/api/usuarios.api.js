@@ -17,14 +17,43 @@ export const getAllUsers = () => {
     window.location.href = "/";
   }
 };
+
+//Obtener un usuario por su id
 export const getOneUser = (id) => usuariosApi.get(`/usuario/usuario/${id}`);
+
 //Peticion post para crear un nuevo usuario
-export const createUser = (usuario) =>
-  usuariosApi.post("/usuario/usuario/", usuario);
+export const createUser = (usuario) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return usuariosApi.post("/usuario/usuario/", usuario, {
+      params: { token },
+    });
+  } else {
+    window.location.href = "/";
+  }
+};
+
 //Peticion para eliminar un usuario mediante su ID
-export const deleteUser = (id) => usuariosApi.delete(`/usuario/usuario/${id}`);
+export const deleteUser = (id) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return usuariosApi.delete(`/usuario/usuario/${id}`, {
+      params: { token },
+    });
+  } else {
+    window.location.href = "/";
+  }
+};
 //Petiicion para actualizar un usuario obteniendo sus datos mediante el id
-export const updateUser = (id, usuario) =>
-  usuariosApi.put(`/usuario/usuario/${id}/`, usuario);
+export const updateUser = (id, usuario) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return usuariosApi.put(`/usuario/usuario/${id}/`, usuario, {
+      params: { token },
+    });
+  } else {
+    window.location.href = '/';
+  }
+};
 //Login usuarios
 export const loginUser = (usuario) => usuariosApi.post(`/login/`, usuario);
