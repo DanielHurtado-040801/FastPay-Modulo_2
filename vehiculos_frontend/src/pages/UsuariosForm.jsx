@@ -58,7 +58,7 @@ export function UsuariosForm() {
       <form
         onSubmit={onSubmit}
         action=""
-        class="bg-white shadow-md shadow-zinc-500 rounded-lg px-8 pt-6 pb-8 flex flex-col"
+        className="bg-white shadow-md shadow-zinc-500 rounded-lg px-8 pt-6 pb-8 flex flex-col"
       >
         <span className="font-bold text-zinc-600">Username</span>
         <input
