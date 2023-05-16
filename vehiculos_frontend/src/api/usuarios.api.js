@@ -52,8 +52,27 @@ export const updateUser = (id, usuario) => {
       params: { token },
     });
   } else {
-    window.location.href = '/';
+    window.location.href = "/";
   }
 };
 //Login usuarios
 export const loginUser = (usuario) => usuariosApi.post(`/login/`, usuario);
+
+export const logoutUser = async () => {
+  const token = localStorage.getItem("token");
+  console.log(token);
+
+  try {
+    await usuariosApi.get(`/logout/`, {
+      params: { token },
+    });
+
+    // Eliminar el token del localStorage
+    localStorage.removeItem("token");
+
+    // Redireccionar a la página principal
+    window.location.href = "/";
+  } catch (error) {
+    console.error("Error al cerrar sesión:", error);
+  }
+};
