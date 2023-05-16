@@ -8,6 +8,7 @@ export function Navigation() {
           ["Crear Usuario", "/usuarios-create"],
           ["Home Vehiculos", "/vehiculos"],
           ["Crear Vehiculos", "/vehiculos-create"],
+          ["Logout", "/logout"],
         ].map(([title, url], index) => (
           <div key={index} className=" h-full">
             <a
