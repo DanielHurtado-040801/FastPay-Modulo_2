@@ -60,7 +60,6 @@ export const loginUser = (usuario) => usuariosApi.post(`/login/`, usuario);
 
 export const logoutUser = async () => {
   const token = localStorage.getItem("token");
-  console.log(token);
 
   try {
     await usuariosApi.get(`/logout/`, {

@@ -1,14 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { format } from 'date-fns';
+
 
 export function VehiculosTable({ vehiculo }) {
   const navigate = useNavigate();
 
   return (
     <tr
-      onClick={() => {
-        navigate(`/vehiculos/${vehiculo.id}`);
-      }}
       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
     >
       <td className="w-4 p-4">
@@ -28,13 +27,26 @@ export function VehiculosTable({ vehiculo }) {
       </th>
       <td className="px-6 py-4">{vehiculo.placa}</td>
       <td className="px-6 py-4">{vehiculo.hora_ingreso}</td>
-      <td className="px-6 py-4">{vehiculo.hora_salida}</td>
+      <td className="px-6 py-4">{vehiculo.hora_pago}</td>
+      <td className="px-6 py-4">{vehiculo.valor_pagar}</td>
       <td className="px-6 py-4">
         <a
-          href="#"
+          onClick={() => {
+            navigate(`/vehiculos/pagar/${vehiculo.id}`);
+          }}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
-          Edit
+          PAGAR
+        </a>
+      </td>
+      <td className="px-6 py-4">
+        <a
+      onClick={() => {
+        navigate(`/vehiculos/${vehiculo.id}`);
+      }}
+          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          EDIT
         </a>
       </td>
     </tr>

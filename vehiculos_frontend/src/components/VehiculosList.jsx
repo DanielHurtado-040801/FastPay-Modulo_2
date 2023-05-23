@@ -66,6 +66,12 @@ export function VehiculosList() {
               Hora Salida
             </th>
             <th scope="col" className="px-6 py-3">
+              Valor Pago
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Action
+            </th>
+            <th scope="col" className="px-6 py-3">
               Action
             </th>
           </tr>

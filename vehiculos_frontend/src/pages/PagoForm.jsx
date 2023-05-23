@@ -1,18 +1,13 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import {
-  createVehiculo,
-  deleteVehiculo,
-  updateVehiculo,
-  getOneVehiculo,
-} from "../api/vehiculos.api";
+import { validarPago, getOneVehiculo, pagar } from "../api/vehiculos.api";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { format } from "date-fns";
 
 //para mejor validaciones en el form instalar las librerias yup y zod
 
-export function VehiculosForm() {
+export function PagoForm() {
   const {
     register,
     handleSubmit,
@@ -25,21 +20,14 @@ export function VehiculosForm() {
   const onSubmit = handleSubmit(async (data) => {
     //Validamos si estamos accediendo para actualizar o crear un usuario mediante la URL si tiene o no un id
     if (parametros.id) {
-      await updateVehiculo(parametros.id, data);
-      toast.success("Vehiculo Actualizado Correctamente!", {
-        position: "top",
-        style: { background: "#101010", color: "#FFFFFF" },
-      });
-    } else {
-      await createVehiculo(data);
-      toast.success("Vehiculo Creado Correctamente!", {
+      await pagar(parametros.id, data);
+      toast.success("Parqeuadero Pago Correctamente!", {
         position: "top",
         style: { background: "#101010", color: "#FFFFFF" },
       });
     }
     navigate("/vehiculos");
   });
-
 
   useEffect(() => {
     async function cargarVehiculo() {
@@ -56,6 +44,7 @@ export function VehiculosForm() {
           "yyyy-MM-dd HH:mm:ss"
         );
         setValue("hora_ingreso", respuesta.data.hora_ingreso);
+        setValue("hora_pago", respuesta.data.hora_pago);
         setValue("hora_pago", respuesta.data.hora_pago);
         setValue("valor_pagar", respuesta.data.valor_pagar);
       }
@@ -91,51 +80,30 @@ export function VehiculosForm() {
         {errors.hora_ingreso && (
           <span className="text-red-500">** Este campo es requerido</span>
         )}
-
-        <span className="font-bold text-zinc-600  mt-1">Hora Salida</span>
+        <span className="font-bold text-zinc-600">Hora de Pago</span>
         <input
           type="text"
-          placeholder="hora_salida"
-          {...register("hora_pago", { required: false, null:true})}
-          className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2  "
+          placeholder="Hora Salida"
+          {...register("hora_pago", { required: false })}
+          className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2"
         />
-        {errors.hora_salida && (
+        {errors.hora_ingreso && (
           <span className="text-red-500">** Este campo es requerido</span>
         )}
-        <span className="font-bold text-zinc-600 mt-1">Valor a pagar</span>
-        <div className="flex items-center">
-          <span className="text-zinc-600 mr-1">$</span>
-          <input
-            type="number"
-            {...register("valor_pagar", { required: false })}
-            className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2"
-          />
-        </div>
-        {errors.valor_pagar && (
+        <span className="font-bold text-zinc-600">Valor a Pagar</span>
+        <input
+          type="number"
+          placeholder="Valor a pagar"
+          {...register("valor_pagar", { required: false })}
+          className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2"
+        />
+        {errors.hora_ingreso && (
           <span className="text-red-500">** Este campo es requerido</span>
         )}
-        <button className="shadow-md bg-blue-600 p-3 rounded-lg block w-full mt-3  shadow-zinc-400 text-white font-bold">
-          Guardar
+        <button className="shadow-md bg-green-600 p-3 rounded-lg block w-full mt-3  shadow-zinc-400 text-white font-bold">
+          Pagar
         </button>
       </form>
-      {parametros.id && (
-        <button
-          className="bg-red-500 p-3 rounded-lg w-full mt-3  shadow-zinc-900 text-white font-bold"
-          onClick={async () => {
-            const confirmar = window.confirm("¿Estas seguro?");
-            if (confirmar) {
-              await deleteVehiculo(parametros.id);
-              toast.success("Vehiculo Eliminado Correctamente!", {
-                position: "top",
-                style: { background: "#101010", color: "#FFFFFF" },
-              });
-              navigate("/vehiculos");
-            }
-          }}
-        >
-          Eliminar
-        </button>
-      )}
     </div>
   );
 }
