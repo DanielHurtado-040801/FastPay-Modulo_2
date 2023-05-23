@@ -147,16 +147,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = '/static/'
 MEDIA_URL = '/img/'
 #Ruta para guardar las imagenes en una carpeta y me reconozca por django esa carpeta
-MEDIA_ROOT = os.path.join(BASE_DIR, 'img')
+MEDIA_ROOT = '/Users/danielhurtado/Documents/UEB/PROYECTO GRADO - FAST PAY/Modulo Administracion - Django Rest Framework/vehiculos_rest/vehiculos_rest/img/placas'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
