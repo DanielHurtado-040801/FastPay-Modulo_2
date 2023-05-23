@@ -61,11 +61,7 @@ THIRD_APPS = [
     'drf_yasg',
     'coreapi',
     'rest_framework_simplejwt',
-    'storages',
 ]
-
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = 'bucket-fastpay'
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS 
 

@@ -4,4 +4,4 @@ from rest_framework import serializers
 class VehiculoSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Vehiculo
-        exclude = ('state','img_placa')
+        exclude = ('state', )
