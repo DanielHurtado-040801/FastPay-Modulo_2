@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
+
 
 //Creamos la url base para solo agregar las rutas mas simples a la url base y tener el codigo mas ordenado
 const vehiculosApi = axios.create({
@@ -47,9 +49,51 @@ export const updateVehiculo = (id, vehiculo) => {
   const token = localStorage.getItem("token");
   if (token) {
     return vehiculosApi.put(`/vehiculo/vehiculo/${id}`, vehiculo, {
-        params: {token},
+      params: { token },
     });
   } else {
-    window.location.href = '/';
+    window.location.href = "/";
   }
 };
+
+//Petiicion para actualizar un usuario obteniendo sus datos mediante el id
+export const validarPago = (id) => {
+  const token = localStorage.getItem("token");
+  try {
+    vehiculosApi.get(`/vehiculo/vehiculo/pagar/${id}`, {
+      params: { token },
+    });
+    // Redireccionar a la página principal
+    toast.success("Ya se ha calculado el valor a pagar 😃!!", {
+      position: "top",
+      style: { background: "#101010", color: "#FFFFFF" },
+    });
+  } catch (error) {
+    console.error("Error al calcular valor a pagar", error);
+    toast.error("Ya se ha pagado 😃!!", {
+      position: "top",
+      style: { background: "#101010", color: "#FFFFFF" },
+    });
+  }
+};
+
+export const pagar = (id, vehiculo) => {  // Agrega los paréntesis para los parámetros
+  const token = localStorage.getItem("token");
+  console.log(vehiculo)
+  try {
+    vehiculosApi.put(`/vehiculo/vehiculo/pagar/${id}`, vehiculo , {
+      params: { token },
+    });
+    // Redireccionar a la página principal
+    toast.success("Pagado exitosamente😃!!", {
+      position: "top",
+      style: { background: "#101010", color: "#FFFFFF" },
+    });
+  } catch (error) {
+    console.error("Error al pagar", error);
+    toast.error("Error al pagar😃!!", {
+      position: "top",
+      style: { background: "#101010", color: "#FFFFFF" },
+    });
+  }
+}

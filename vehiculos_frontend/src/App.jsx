@@ -9,11 +9,21 @@ import { VehiculosForm } from "./pages/VehiculosForm";
 import { Login } from "./pages/Login";
 import { logoutUser } from "./api/usuarios.api";
 
+
 import { Navigation } from "./components/Navigation";
 ("./components/Navigation");
 import { Footer } from "./components/Footer";
 ("./components/Footer");
 import { Toaster } from "react-hot-toast";
+
+import React, { useEffect } from 'react';
+
+import { useParams } from "react-router-dom";
+import { PagoForm } from "./pages/PagoForm";
+
+
+
+
 
 function App() {
   return (
@@ -30,6 +40,7 @@ function App() {
           <Route path="/vehiculos/:id" element={<VehiculosForm />} />
           <Route path="/vehiculos-create" element={<VehiculosForm />} />
           <Route path="/logout" element={<LogoutRedirect />} />
+          <Route path="/vehiculos/pagar/:id" element={<PagoForm />} />
         </Routes>
         <Toaster></Toaster>
       </div>
@@ -43,5 +54,6 @@ function LogoutRedirect() {
   // Ejecutar la función logoutUser
   logoutUser();
 }
+
 
 export default App;
