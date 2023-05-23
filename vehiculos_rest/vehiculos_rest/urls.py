@@ -7,6 +7,8 @@ from drf_yasg import openapi
 
 from users.views import Login, Logout
 from rest_framework.documentation import include_docs_urls
+from django.conf.urls.static import static
+from django.conf import settings
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -33,3 +35,5 @@ urlpatterns = [
     path('vehiculo/', include('vehiculosApp.api.urls')),
     path('docs/', include_docs_urls(title='Fast Pay')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
