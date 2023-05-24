@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   createVehiculo,
@@ -9,6 +9,8 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { format } from "date-fns";
+import { PUBLIC_URL } from "/postcss.config.js";
+
 
 //para mejor validaciones en el form instalar las librerias yup y zod
 
@@ -21,6 +23,7 @@ export function VehiculosForm() {
   } = useForm();
   const navigate = useNavigate();
   const parametros = useParams();
+  const [imagenPlaca, setImagenPlaca] = useState(null);
 
   const onSubmit = handleSubmit(async (data) => {
     //Validamos si estamos accediendo para actualizar o crear un usuario mediante la URL si tiene o no un id
@@ -40,7 +43,6 @@ export function VehiculosForm() {
     navigate("/vehiculos");
   });
 
-
   useEffect(() => {
     async function cargarVehiculo() {
       if (parametros.id) {
@@ -58,6 +60,8 @@ export function VehiculosForm() {
         setValue("hora_ingreso", respuesta.data.hora_ingreso);
         setValue("hora_pago", respuesta.data.hora_pago);
         setValue("valor_pagar", respuesta.data.valor_pagar);
+        setImagenPlaca(`${PUBLIC_URL + respuesta.data.img_placa}`);
+        console.log(respuesta);
       }
     }
     cargarVehiculo();
@@ -96,7 +100,7 @@ export function VehiculosForm() {
         <input
           type="text"
           placeholder="hora_salida"
-          {...register("hora_pago", { required: false, null:true})}
+          {...register("hora_pago", { required: false, null: true })}
           className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2  "
         />
         {errors.hora_salida && (
@@ -113,6 +117,9 @@ export function VehiculosForm() {
         </div>
         {errors.valor_pagar && (
           <span className="text-red-500">** Este campo es requerido</span>
+        )}
+        {imagenPlaca && (
+          <img src={imagenPlaca} alt="Foto del vehículo" className="mt-3" />
         )}
         <button className="shadow-md bg-blue-600 p-3 rounded-lg block w-full mt-3  shadow-zinc-400 text-white font-bold">
           Guardar
