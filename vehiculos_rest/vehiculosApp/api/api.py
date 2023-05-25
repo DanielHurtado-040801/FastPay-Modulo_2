@@ -93,3 +93,10 @@ def valor_a_pagar(request, pk):
             return Response(vehiculo_serializer.data)
         else: 
             return Response(vehiculo_serializer.errors)
+        
+@api_view(['GET'])
+def vehiculo_detail_view_placa(request, plate):
+    if request.method == 'GET':
+        vehiculo = Vehiculo.objects.filter(placa=plate).first()
+        vehiculo_serializer = VehiculoSerializer(vehiculo)
+        return Response(vehiculo_serializer.data)
