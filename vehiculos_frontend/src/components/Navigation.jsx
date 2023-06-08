@@ -10,40 +10,78 @@ export function Navigation() {
   }, [token]);
 
   return (
-    <nav className="flex justify-between items-center py-5 mb-5 bg-zinc-800 shadow-lg shadow-gray-400">
-      <div className="flex items-center">
-        <img src="../public/LOGO-2-FASTPAY.svg"  alt="Logo" className="w-10 h-10 ml-5" />
-        <span className="font-semibold text-xl tracking-tight text-blue-600 ml-2">FASTPAY</span>
-      </div>
-
-      <div className="flex space-x-4 mr-5">
-        {[
-          ["Home Usuarios", "/usuarios"],
-          ["Crear Usuario", "/usuarios-create"],
-          ["Home Vehiculos", "/vehiculos"],
-          ["Crear Vehiculos", "/vehiculos-create"],
-        ].map(([title, url], index) => (
-          <div key={index} className="h-full">
+    <div>
+      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+          <a href="#" className="flex items-center">
+            <img
+              src="../public/Logo FastPay (2).svg"
+              className="h-8 mr-3 transform scale-150"
+              alt="FastPay Logo"
+            />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              Fast<span className="text-blue-600 dark:text-blue-400">Pay</span>
+            </span>
+          </a>
+          <div className="flex items-center">
             <a
-              href={url}
-              className="px-3 py-8 my-5 text-white font-medium hover:bg-blue-700 hover:text-white hover:font-bold"
+              href="tel:5541251234"
+              className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"
             >
-              {title}
+              (314) 430-400
             </a>
+            {showLogoutButton && (
+                <a
+                  href="/logout"
+                  className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                  Logout
+                </a>
+            )}
           </div>
-        ))}
-
-        {showLogoutButton && (
-          <div className="h-full">
-            <a
-              href="/logout"
-              className="px-3 py-8 my-4 text-white font-medium hover:bg-blue-700 hover:text-white hover:font-bold"
-            >
-              Logout
-            </a>
+        </div>
+      </nav>
+      <nav className="bg-gray-200 dark:bg-gray-700">
+        <div className="max-w-screen-xl px-4 py-3 mx-auto">
+          <div className="flex items-center flex-row-reverse">
+            <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
+              <li>
+                <a
+                  href="/usuarios"
+                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                  aria-current="page"
+                >
+                  Usuarios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/usuarios-create"
+                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                >
+                  Crear Usuario
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/vehiculos"
+                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                >
+                  Vehiculos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/vehiculos-create"
+                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                >
+                  Crear Vehiculo
+                </a>
+              </li>
+            </ul>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </div>
   );
 }
