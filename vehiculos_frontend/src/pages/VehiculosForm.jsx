@@ -68,7 +68,7 @@ export function VehiculosForm() {
   }, []);
 
   return (
-    <div className="max-w-lg mx-auto mt-20">
+    <div className="max-w-lg mx-auto mt-10 grow">
       <form
         onSubmit={onSubmit}
         action=""
