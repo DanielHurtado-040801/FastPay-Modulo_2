@@ -1,13 +1,12 @@
--- SQLite
 INSERT INTO users_user (username, email, name, last_name, password, is_active, is_staff, is_superuser)
 VALUES
-    ('usuario1', 'usuario1@example.com', 'Nombre1', 'Apellido1', 'contraseña1', 1, 1, 0),
-    ('usuario2', 'usuario2@example.com', 'Nombre2', 'Apellido2', 'contraseña2', 1, 1, 0),
-    ('usuario3', 'usuario3@example.com', 'Nombre3', 'Apellido3', 'contraseña3', 1, 1, 0),
-    ('usuario4', 'usuario4@example.com', 'Nombre4', 'Apellido4', 'contraseña4', 1, 1, 0),
-    ('usuario5', 'usuario5@example.com', 'Nombre5', 'Apellido5', 'contraseña5', 1, 1, 0),
-    ('usuario6', 'usuario6@example.com', 'Nombre6', 'Apellido6', 'contraseña6', 1, 1, 0),
-    ('usuario7', 'usuario7@example.com', 'Nombre7', 'Apellido7', 'contraseña7', 1, 1, 0),
-    ('usuario8', 'usuario8@example.com', 'Nombre8', 'Apellido8', 'contraseña8', 1, 1, 0),
-    ('usuario9', 'usuario9@example.com', 'Nombre9', 'Apellido9', 'contraseña9', 1, 1, 0),
-    ('usuario10', 'usuario10@example.com', 'Nombre10', 'Apellido10', 'contraseña10', 1, 1, 0);
+    ('john.doe', 'john.doe@example.com', 'John', 'Doe', 'password1', 1, 1, 0),
+    ('jane.smith', 'jane.smith@example.com', 'Jane', 'Smith', 'password2', 1, 1, 0),
+    ('michael.brown', 'michael.brown@example.com', 'Michael', 'Brown', 'password3', 1, 1, 0),
+    ('sarah.johnson', 'sarah.johnson@example.com', 'Sarah', 'Johnson', 'password4', 1, 1, 0),
+    ('david.wilson', 'david.wilson@example.com', 'David', 'Wilson', 'password5', 1, 1, 0),
+    ('emily.jones', 'emily.jones@example.com', 'Emily', 'Jones', 'password6', 1, 1, 0),
+    ('james.davis', 'james.davis@example.com', 'James', 'Davis', 'password7', 1, 1, 0),
+    ('olivia.taylor', 'olivia.taylor@example.com', 'Olivia', 'Taylor', 'password8', 1, 1, 0),
+    ('william.thomas', 'william.thomas@example.com', 'William', 'Thomas', 'password9', 1, 1, 0),
+    ('ava.jackson', 'ava.jackson@example.com', 'Ava', 'Jackson', 'password10', 1, 1, 0);

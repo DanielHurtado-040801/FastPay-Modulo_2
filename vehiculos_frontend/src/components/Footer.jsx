@@ -6,7 +6,7 @@ export function Footer() {
       <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-200 sm:mb-0">
         &copy; 2022-2024{" "}
         <a
-          href="https://flowbite.com/"
+          href="#"
           className="hover:underline"
           target="_blank"
         >
@@ -18,7 +18,7 @@ export function Footer() {
         <a
           href="#"
           data-tooltip-target="tooltip-facebook"
-          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-blue-600"
+          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-white hover:bg-blue-600 dark:hover:bg-blue-600"
         >
           <svg
             aria-hidden="true"
@@ -45,7 +45,7 @@ export function Footer() {
         <a
           href="#"
           data-tooltip-target="tooltip-twitter"
-          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-sky-400"
+          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-white hover:bg-sky-400 dark:hover:bg-sky-400"
         >
           <svg
             aria-hidden="true"
@@ -68,7 +68,7 @@ export function Footer() {
         <a
           href="#"
           data-tooltip-target="tooltip-github"
-          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-green-600"
+          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-white hover:bg-green-600 dark:hover:bg-green-600"
         >
           <svg
             aria-hidden="true"
@@ -95,7 +95,7 @@ export function Footer() {
         <a
           href="#"
           data-tooltip-target="tooltip-dribbble"
-          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-orange-600"
+          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-white hover:bg-orange-600 dark:hover:bg-orange-600"
         >
           <svg
             aria-hidden="true"

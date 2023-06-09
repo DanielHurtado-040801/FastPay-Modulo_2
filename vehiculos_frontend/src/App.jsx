@@ -29,7 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation></Navigation>
-      <div className="w-full px-10 bg-white dark:bg-gray-900 mb-20 mt-5 ms:mb-0 ms:mt-0">
+      <div className="w-full px-10 bg-white dark:bg-gray-900 md:mb-20 md:mt-5 mb-5 mt-5">
         <Routes>
           <Route path="/" element={<Login />} /> //Esta ruta redirecciona la
           ruta principal a la que yo quiero que sea mi ruta principal
