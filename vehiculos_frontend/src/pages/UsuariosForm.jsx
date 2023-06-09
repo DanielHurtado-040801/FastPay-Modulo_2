@@ -54,7 +54,7 @@ export function UsuariosForm() {
   }, []);
 
   return (
-    <div className="max-w-lg mx-auto my-10 grow">
+    <div className="max-w-lg mx-auto mt-0 md:mt-28 grow">
       <form
         onSubmit={onSubmit}
         action=""

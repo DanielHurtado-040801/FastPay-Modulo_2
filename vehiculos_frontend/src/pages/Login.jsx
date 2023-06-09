@@ -48,7 +48,7 @@ export function Login() {
   });
 
   return (
-    <div className="max-w-lg mx-auto mt-20 grid justify-items-center">
+    <div className="max-w-lg mx-auto md:mt-40 mt-0 grid justify-items-center">
       <form
         onSubmit={onSubmit}
         action=""

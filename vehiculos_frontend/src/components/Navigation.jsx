@@ -19,21 +19,21 @@ export function Navigation() {
               className="h-8 mr-3 transform scale-150"
               alt="FastPay Logo"
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Fast<span className="text-blue-600 dark:text-blue-400">Pay</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-blue-900 dark:text-white">
+              Fast<span className="text-blue-400 dark:text-blue-400">Pay</span>
             </span>
           </a>
           <div className="flex items-center">
             <a
-              href="tel:5541251234"
-              className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"
+              href="tel:3144530400"
+              className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline dark:hover:text-blue-400"
             >
               (314) 430-400
             </a>
             {showLogoutButton && (
                 <a
                   href="/logout"
-                  className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
+                  className="text-sm  text-blue-600 dark:text-blue-500 dark:hover:text-white"
                   >
                   Logout
                 </a>
@@ -48,7 +48,7 @@ export function Navigation() {
               <li>
                 <a
                   href="/usuarios"
-                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                  className="text-gray-900 dark:text-white hover:text-blue-600"
                   aria-current="page"
                 >
                   Usuarios
@@ -57,7 +57,7 @@ export function Navigation() {
               <li>
                 <a
                   href="/usuarios-create"
-                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                  className="text-gray-900 dark:text-white  hover:text-blue-600"
                 >
                   Crear Usuario
                 </a>
@@ -65,7 +65,7 @@ export function Navigation() {
               <li>
                 <a
                   href="/vehiculos"
-                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                  className="text-gray-900 dark:text-white  hover:text-blue-600"
                 >
                   Vehiculos
                 </a>
@@ -73,7 +73,7 @@ export function Navigation() {
               <li>
                 <a
                   href="/vehiculos-create"
-                  className="text-gray-900 dark:text-white hover:underline hover:text-blue-600"
+                  className="text-gray-900 dark:text-white  hover:text-blue-600"
                 >
                   Crear Vehiculo
                 </a>

@@ -2,9 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import moment from "moment";
+import "moment-timezone";
 
 export function VehiculosTable({ vehiculo }) {
   const navigate = useNavigate();
+
+  moment.tz.setDefault("America/Bogota");
 
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
@@ -13,10 +16,14 @@ export function VehiculosTable({ vehiculo }) {
         {vehiculo.placa}
       </td>
       <td className="px-6 py-4">
-        {moment(vehiculo.hora_ingreso).format("MMMM Do YYYY, h:mm:ss a")}
+        {moment(vehiculo.hora_ingreso)
+          .add(5, "hours")
+          .format("MMMM Do YYYY, h:mm:ss a")}
       </td>
       <td className="px-6 py-4">
-        {moment(vehiculo.hora_pago).format("MMMM Do YYYY, h:mm:ss a")}
+        {moment(vehiculo.hora_pago)
+          .add(5, "hours")
+          .format("MMMM Do YYYY, h:mm:ss a")}
       </td>
       <td className="px-6 py-4">
         {" "}
