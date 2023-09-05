@@ -77,7 +77,7 @@ export const validarPago = (id) => {
   }
 };
 
-export const pagar = (id, vehiculo) => {  // Agrega los paréntesis para los parámetros
+export const pagar = (id, vehiculo) => {  
   const token = localStorage.getItem("token");
   console.log(vehiculo)
   try {

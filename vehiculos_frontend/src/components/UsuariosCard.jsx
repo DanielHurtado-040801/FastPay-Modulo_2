@@ -11,13 +11,10 @@ export function UsuariosCard({ usuario }) {
         </h5>
       </a>
       <p className="mb-1 font-normal text-gray-700 dark:text-gray-400">
-        {usuario.name}
+        {usuario.name} {usuario.last_name}
       </p>
       <p className="mb-1 font-normal text-gray-700 dark:text-gray-400">
         {usuario.email}
-      </p>
-      <p className="mb-2 font-normal text-gray-700 dark:text-gray-400">
-        {usuario.last_name}
       </p>
       <a
         href={`/usuarios/${usuario.id}`}
