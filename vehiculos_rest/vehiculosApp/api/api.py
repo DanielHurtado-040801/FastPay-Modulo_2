@@ -6,6 +6,8 @@ from rest_framework.response import Response
 import pytz
 from datetime import datetime, timedelta
 from django.utils.timezone import make_aware
+from rest_framework import status
+
 
 
 
@@ -98,5 +100,9 @@ def valor_a_pagar(request, pk):
 def vehiculo_detail_view_placa(request, plate):
     if request.method == 'GET':
         vehiculo = Vehiculo.objects.filter(placa=plate).first()
-        vehiculo_serializer = VehiculoSerializer(vehiculo)
-        return Response(vehiculo_serializer.data)
+
+        if vehiculo is not None:
+            vehiculo_serializer = VehiculoSerializer(vehiculo)
+            return Response(vehiculo_serializer.data)
+        else:
+            return Response({'message': 'No se encontró ningún vehículo con esta placa.'}, status=status.HTTP_404_NOT_FOUND)

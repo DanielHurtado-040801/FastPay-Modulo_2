@@ -2,7 +2,7 @@ import React from "react";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-200 sm:flex sm:items-center sm:justify-between p-0 sm:p-3 dark:bg-gray-700 bottom-0 lg:botton-0 w-full md:fixed">
+    <footer className="bg-gray-200 sm:flex sm:items-center sm:justify-between sm:b-0 p-0 sm:p-3 dark:bg-gray-700 bottom-0 lg:botton-0 w-full md:fixed">
       <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-200 sm:mb-0">
         &copy; 2022-2024{" "}
         <a
