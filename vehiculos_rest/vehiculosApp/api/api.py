@@ -7,6 +7,7 @@ import pytz
 from datetime import datetime, timedelta
 from django.utils.timezone import make_aware
 from rest_framework import status
+from audit.models import Auditoria
 
 
 
@@ -26,6 +27,7 @@ def vehiculo_api_view(request):
             return Response(vehiculos_serializer.data)
         return Response(vehiculos_serializer.errors)
     
+
 @api_view(['GET','PUT','DELETE'])
 def vehiculo_detail_view(request, pk):
     if request.method == 'GET':
@@ -38,6 +40,15 @@ def vehiculo_detail_view(request, pk):
         vehiculo_serializer = VehiculoSerializer(vehiculo, data=request.data)
         if vehiculo_serializer.is_valid():
             vehiculo_serializer.save()
+            vehiculo = vehiculo_serializer.save()  # Guarda el vehículo en la base de datos
+
+            # Crea el registro de auditoría después de guardar el vehículo
+            Auditoria.objects.create(
+                usuario_id = request.query_params.get('userId'),
+                vehiculo_afectado=vehiculo,  # Utiliza la instancia guardada del vehículo
+                accion='U',  # Modificación
+                detalles=vehiculo.comentario + '- Vehiculo: ' + vehiculo.placa
+            )
             return Response(vehiculo_serializer.data)
         else: 
             return Response("Datos invalidos")
@@ -45,6 +56,13 @@ def vehiculo_detail_view(request, pk):
     elif request.method == 'DELETE':
         vehiculo = Vehiculo.objects.filter(id=pk).first()
         vehiculo.delete()
+        # Crea el registro de auditoría después de guardar el vehículo
+        Auditoria.objects.create(
+                usuario_id = request.query_params.get('userId'),
+                vehiculo_afectado=vehiculo,  # Utiliza la instancia guardada del vehículo
+                accion='D',  # Modificación
+                detalles=f'Se actualizo el vehiculo con placa {vehiculo.placa}.'
+                )
         return Response("Vehiculo eliminado correctamente")
     
 from django.utils import timezone

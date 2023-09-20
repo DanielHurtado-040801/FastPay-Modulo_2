@@ -2,6 +2,8 @@ from django.db import models
 from baseApp.models import BaseModel
 from datetime import datetime
 
+from django.contrib.auth.models import User
+
 # Create your models here.
 class Vehiculo(BaseModel):
     placa = models.CharField('Placa identificada',max_length=10, unique=True)
@@ -10,6 +12,7 @@ class Vehiculo(BaseModel):
     hora_pago = models.DateTimeField('Hora de pago', null=True, auto_now_add=False)
     valor_pagar = models.DecimalField(max_digits=8, decimal_places=2, null=True, default=0)
     salida = models.BooleanField(default=False)
+    comentario = models.TextField(null=True, default='')
 
 class Meta:
 

@@ -32,9 +32,11 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
+    'https://mwl7t21z-5173.use2.devtunnels.ms/',
+    'https://mwl7t21z-8000.use2.devtunnels.ms/', 
 )
 
 # Application definition
@@ -52,6 +54,7 @@ LOCAL_APPS = [
     'users',
     'vehiculosApp',
     'baseApp',
+    'audit',
 ]
 #Librerias externas
 THIRD_APPS = [

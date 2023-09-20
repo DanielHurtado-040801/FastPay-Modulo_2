@@ -30,6 +30,7 @@ export function UsuariosForm() {
         style: { background: "#101010", color: "#FFFFFF" },
       });
     } else {
+      // Cambia la llamada a la función createUser para permitir la creación sin autenticación
       await createUser(data);
       toast.success("Usuario Creado Correctamente!", {
         position: "top",
@@ -48,6 +49,7 @@ export function UsuariosForm() {
         setValue("name", respuesta.data.name);
         setValue("last_name", respuesta.data.last_name);
         setValue("email", respuesta.data.email);
+        setValue("password", respuesta.data.password);
       }
     }
     cargarUsuario();
