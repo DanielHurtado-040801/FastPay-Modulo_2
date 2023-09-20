@@ -4,8 +4,6 @@ import { loginUser } from "../api/usuarios.api";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-//para mejor validaciones en el form instalar las librerias yup y zod
-
 export function Login() {
   const {
     register,
@@ -23,14 +21,16 @@ export function Login() {
     };
 
     const response = await fetch(
-      "http://localhost:8000/login/",
+      "https://mwl7t21z-8000.use2.devtunnels.ms/login/",
       requestOptions
     );
     const responseData = await response.json();
 
-    // Manejar la respuesta de la API, por ejemplo:
     if (response.ok) {
       localStorage.setItem("token", responseData.token);
+      localStorage.setItem("userId", responseData.user.id); // Guarda el atributo "id" del usuario en localStorage
+      localStorage.setItem("User", JSON.stringify(responseData.user));
+      const user = JSON.parse(localStorage.getItem("User"));
 
       toast.success("Usuario Loggeado Correctamente!", {
         position: "top",
@@ -42,7 +42,7 @@ export function Login() {
       console.error(responseData);
       toast.error("Usuario o contraseña incorrectos!! ☹️", {
         position: "top",
-        style: { background: "#101010", color: "#FFFFFF" },
+        style: { background: "#FF0000", color: "#FFFFFF" }, // Cambia los estilos para resaltar el error
       });
     }
   });
@@ -82,7 +82,10 @@ export function Login() {
           <span className="text-red-500">** Este campo es requerido</span>
         )}
 
-        <a href="/usuarios-create" className="text-blue-600 underline mt-3 ml-2 text-sm">
+        <a
+          href="/usuarios-create"
+          className="text-blue-600 underline mt-3 ml-2 text-sm"
+        >
           Create a new account
         </a>
 

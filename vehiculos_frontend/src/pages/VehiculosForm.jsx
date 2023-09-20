@@ -11,7 +11,6 @@ import { toast } from "react-hot-toast";
 import { format } from "date-fns";
 import { PUBLIC_URL } from "/postcss.config.js";
 
-
 //para mejor validaciones en el form instalar las librerias yup y zod
 
 export function VehiculosForm() {
@@ -25,7 +24,13 @@ export function VehiculosForm() {
   const parametros = useParams();
   const [imagenPlaca, setImagenPlaca] = useState(null);
 
+  const user = JSON.parse(localStorage.getItem("User"));
+
+
   const onSubmit = handleSubmit(async (data) => {
+
+    data.user = user;
+
     //Validamos si estamos accediendo para actualizar o crear un usuario mediante la URL si tiene o no un id
     if (parametros.id) {
       await updateVehiculo(parametros.id, data);
@@ -68,11 +73,11 @@ export function VehiculosForm() {
   }, []);
 
   return (
-    <div className="max-w-lg mx-auto md:mt-36 grow mt-0">
+    <div className="max-w-lg mx-auto md:mt-28 grow mt-0">
       <form
         onSubmit={onSubmit}
         action=""
-        className="bg-white shadow-md shadow-zinc-500 rounded-lg px-8 pt-6 pb-8 flex flex-col"
+        className="bg-white shadow-md shadow-zinc-500 rounded-lg px-8 pt-4 pb-8 flex flex-col"
       >
         <span className="font-bold text-zinc-600">Placa</span>
         <input
@@ -116,6 +121,17 @@ export function VehiculosForm() {
           />
         </div>
         {errors.valor_pagar && (
+          <span className="text-red-500">** Este campo es requerido</span>
+        )}
+        <span className="font-bold text-zinc-600 mt-1">Comentario</span>
+        <div className="flex items-center">
+          <input
+            type="text"
+            {...register("comentario", { required: false })}
+            className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2"
+          />
+        </div>
+        {errors.comentario && (
           <span className="text-red-500">** Este campo es requerido</span>
         )}
         {imagenPlaca && (

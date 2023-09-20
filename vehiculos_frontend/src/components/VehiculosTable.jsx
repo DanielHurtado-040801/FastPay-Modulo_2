@@ -36,7 +36,7 @@ export function VehiculosTable({ vehiculo }) {
           onClick={() => {
             navigate(`/vehiculos/pagar/${vehiculo.id}`);
           }}
-          className="font-medium text-green-600 dark:text-green-700 hover:underline"
+          className="font-medium text-green-600 dark:text-green-700 hover:cursor-pointer"
         >
           PAGAR
         </a>
@@ -46,7 +46,7 @@ export function VehiculosTable({ vehiculo }) {
           onClick={() => {
             navigate(`/vehiculos/${vehiculo.id}`);
           }}
-          className="font-medium text-blue-600 dark:text-blue-600 hover:underline"
+          className="font-medium text-blue-600 dark:text-blue-600 hover:cursor-pointer"
         >
           EDIT
         </a>
