@@ -32,12 +32,21 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
-CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
+    'http://localhost:5173',
     'http://localhost:8081',
-    'https://mwl7t21z-5173.use2.devtunnels.ms/',
-    'https://mwl7t21z-8000.use2.devtunnels.ms/', 
+    'http://mwl7t21z-5173.use2.devtunnels.ms',
+    'http://mwl7t21z-8000.use2.devtunnels.ms',  # Agrega esta línea
 )
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:5173",
+    'http://mwl7t21z-5173.use2.devtunnels.ms',
+    'http://mwl7t21z-8000.use2.devtunnels.ms',  # Agrega esta línea
+]
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Application definition
 #Aplicaciones que vienen por defecto
@@ -55,6 +64,7 @@ LOCAL_APPS = [
     'vehiculosApp',
     'baseApp',
     'audit',
+    'parking',
 ]
 #Librerias externas
 THIRD_APPS = [
@@ -128,10 +138,6 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'users.User'
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-    "http://localhost:5173"
-]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -169,5 +175,6 @@ REST_FRAMEWORK = {
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
+
 
 

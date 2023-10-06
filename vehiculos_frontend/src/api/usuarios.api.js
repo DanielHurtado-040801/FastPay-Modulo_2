@@ -3,7 +3,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 //Creamos la url base para solo agregar las rutas mas simples a la url base y tener el codigo mas ordenado
 const usuariosApi = axios.create({
-  baseURL: "https://mwl7t21z-8000.use2.devtunnels.ms/",
+  baseURL: "http://localhost:8000/",
 });
 
 //Peticion GET para obtener todos los usuarios

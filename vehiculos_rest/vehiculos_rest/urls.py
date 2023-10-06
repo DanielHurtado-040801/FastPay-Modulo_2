@@ -33,6 +33,7 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='Logout'),
     path('usuario/', include('users.api.urls')),
     path('vehiculo/', include('vehiculosApp.api.urls')),
+    path('parking/', include('parking.api.urls')),
     path('docs/', include_docs_urls(title='Fast Pay')),
 ]
 

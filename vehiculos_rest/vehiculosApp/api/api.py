@@ -8,6 +8,8 @@ from datetime import datetime, timedelta
 from django.utils.timezone import make_aware
 from rest_framework import status
 from audit.models import Auditoria
+from parking.models import Parking  # Importa el modelo
+
 
 
 
@@ -46,6 +48,7 @@ def vehiculo_detail_view(request, pk):
             Auditoria.objects.create(
                 usuario_id = request.query_params.get('userId'),
                 vehiculo_afectado=vehiculo,  # Utiliza la instancia guardada del vehículo
+                fecha_hora = make_aware(datetime.now() - timedelta(hours=5)),  # Convertir la hora actual en un objeto con zona horaria
                 accion='U',  # Modificación
                 detalles=vehiculo.comentario + '- Vehiculo: ' + vehiculo.placa
             )
@@ -55,14 +58,15 @@ def vehiculo_detail_view(request, pk):
         return Response(vehiculo_serializer.errors)
     elif request.method == 'DELETE':
         vehiculo = Vehiculo.objects.filter(id=pk).first()
-        vehiculo.delete()
         # Crea el registro de auditoría después de guardar el vehículo
         Auditoria.objects.create(
                 usuario_id = request.query_params.get('userId'),
                 vehiculo_afectado=vehiculo,  # Utiliza la instancia guardada del vehículo
+                fecha_hora = make_aware(datetime.now() - timedelta(hours=5)),  # Convertir la hora actual en un objeto con zona horaria
                 accion='D',  # Modificación
-                detalles=f'Se actualizo el vehiculo con placa {vehiculo.placa}.'
+                detalles=f'Se elimino el vehiculo con placa {vehiculo.placa}.'
                 )
+        vehiculo.delete()
         return Response("Vehiculo eliminado correctamente")
     
 from django.utils import timezone
@@ -71,6 +75,8 @@ from django.utils import timezone
 def valor_a_pagar(request, pk):
     if request.method == 'GET':
         vehiculo = Vehiculo.objects.filter(id=pk).first()
+        parameters = Parking.objects.first()  # Obtiene los parámetros del parqueadero
+
 
         if vehiculo.salida:  # Verifica si ya se registró la salida del vehículo
             return Response({'error': 'La salida ya ha sido registrada'})
@@ -78,10 +84,11 @@ def valor_a_pagar(request, pk):
         hora_actual = make_aware(datetime.now() - timedelta(hours=5))  # Convertir la hora actual en un objeto con zona horaria
         tiempo_estacionado = hora_actual - vehiculo.hora_ingreso
         minutos_estacionado = tiempo_estacionado.total_seconds() / 60  # Convierte a horas
-        valor_pagar = 85 * minutos_estacionado
-        tarifa_fija = 25000
-        if valor_pagar > 25000:
-            valor_pagar = tarifa_fija
+        valor_pagar = parameters.valor_minuto * minutos_estacionado
+        if valor_pagar > parameters.tarifa_maxima:
+            valor_pagar = parameters.tarifa_maxima
+        if valor_pagar < parameters.tarifa_minima: 
+            valor_pagar = parameters.tarifa_minima
         vehiculo.hora_pago = hora_actual
         vehiculo.valor_pagar = valor_pagar
         vehiculo_serializer = VehiculoSerializer(vehiculo)

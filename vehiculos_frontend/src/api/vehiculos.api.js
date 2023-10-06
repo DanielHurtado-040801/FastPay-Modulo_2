@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 
 //Creamos la url base para solo agregar las rutas mas simples a la url base y tener el codigo mas ordenado
 const vehiculosApi = axios.create({
-  baseURL: "https://mwl7t21z-8000.use2.devtunnels.ms/",
+  baseURL: "http://localhost:8000/",
 });
 
 //Peticion GET para obtener todos los vehiculos
@@ -37,9 +37,10 @@ export const createVehiculo = (vehiculo) => {
 //Peticion para eliminar un usuario mediante su ID
 export const deleteVehiculo = (id) => {
   const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
   if (token) {
     return vehiculosApi.delete(`/vehiculo/vehiculo/${id}`, {
-      params: { token },
+      params: { token, userId},
     });
   } else {
     window.location.href = "/";

@@ -16,7 +16,7 @@ export function Navigation() {
           <div className="">
             <a href="#" className="flex items-center">
               <img
-                src="../public/Logo FastPay (2).svg"
+                src="/Logo FastPay (2).svg"
                 className="h-8 mr-3 transform scale-150"
                 alt="FastPay Logo"
               />
@@ -87,10 +87,10 @@ export function Navigation() {
               </li>
               <li>
                 <a
-                  href="/vehiculos-create"
+                  href="/parking-parameters/1"
                   className="text-gray-900 dark:text-white  hover:text-blue-600"
                 >
-                  Crear Vehículo
+                  Parametros Parking
                 </a>
               </li>
             </ul>

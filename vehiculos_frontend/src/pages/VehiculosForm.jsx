@@ -26,9 +26,7 @@ export function VehiculosForm() {
 
   const user = JSON.parse(localStorage.getItem("User"));
 
-
   const onSubmit = handleSubmit(async (data) => {
-
     data.user = user;
 
     //Validamos si estamos accediendo para actualizar o crear un usuario mediante la URL si tiene o no un id
@@ -54,14 +52,6 @@ export function VehiculosForm() {
         //Obtenemos los datos del usuario por el id y llenamos el formulario con esos datos para poder actualizarlo
         const respuesta = await getOneVehiculo(parametros.id);
         setValue("placa", respuesta.data.placa);
-        const horaIngresoFormateada = format(
-          new Date(respuesta.data.hora_ingreso),
-          "yyyy-MM-dd HH:mm:ss"
-        );
-        const horaPagoFormateada = format(
-          new Date(respuesta.data.hora_ingreso),
-          "yyyy-MM-dd HH:mm:ss"
-        );
         setValue("hora_ingreso", respuesta.data.hora_ingreso);
         setValue("hora_pago", respuesta.data.hora_pago);
         setValue("valor_pagar", respuesta.data.valor_pagar);
@@ -116,6 +106,7 @@ export function VehiculosForm() {
           <span className="text-zinc-600 mr-1">$</span>
           <input
             type="number"
+            step="0.01" // Permite decimales con dos dígitos después del punto
             {...register("valor_pagar", { required: false })}
             className="border-2 shadow-md shadow-zinc-200 p-3 rounded-lg block w-full mb-0 mt-2"
           />
