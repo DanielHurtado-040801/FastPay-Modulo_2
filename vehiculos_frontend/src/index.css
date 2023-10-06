@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Estilos para el modo claro */
+body {
+  background-color: #fff;
+}
+
+/* Estilos para el modo oscuro */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgba(17, 24, 40);
+  }
+}
