@@ -21,7 +21,7 @@ export function Login() {
     };
 
     const response = await fetch(
-      "https://mwl7t21z-8000.use2.devtunnels.ms/login/",
+      "http://localhost:8000/login/",
       requestOptions
     );
     const responseData = await response.json();
@@ -57,7 +57,7 @@ export function Login() {
         <h1 className="text-center font-bold text-2xl">LOGIN</h1>
         <div className="w-full h-full grid justify-items-center">
           <img
-            src="public/Logo FastPay (1).svg"
+            src="Logo FastPay (1).svg"
             alt="logo"
             className="w-20 h-20 mt-5  transform scale-150"
           />

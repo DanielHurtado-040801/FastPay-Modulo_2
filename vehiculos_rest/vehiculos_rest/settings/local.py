@@ -8,25 +8,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-DATABASES = {
+""" DATABASES = {
     'default': dj_database_url.config(        
     default='sqlite:///db.sqlite3',        
     conn_max_age=600    
     )
+} """
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fastpay',
+        'USER': 'danielhurtado',
+        'PASSWORD': 'wilson2001',
+        'HOST': 'localhost',
+        'PORT': '5433',
+    }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'pymongo',
-#     },
-#     'mongo': {
-#         'ENGINE': 'pymongo',
-#         'NAME': 'FastPay',
-#         'HOST': 'localhost',
-#         'PORT': 27017,
-#         'USERNAME': 'dehurtado',
-#         'PASSWORD': 'wilson2001'
-#     }
-# }
 
 # MONGODB_DATABASES = {
 #     'default': {

@@ -20,6 +20,7 @@ import React, { useEffect } from 'react';
 
 import { useParams } from "react-router-dom";
 import { PagoForm } from "./pages/PagoForm";
+import { ParkingParametersForm } from "./pages/ParkingParametersForm";
 
 
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/vehiculos-create" element={<VehiculosForm />} />
           <Route path="/logout" element={<LogoutRedirect />} />
           <Route path="/vehiculos/pagar/:id" element={<PagoForm />} />
+          <Route path="/parking-parameters/1" element={<ParkingParametersForm />} />
         </Routes>
         <Toaster></Toaster>
       </div>
